@@ -37,7 +37,7 @@ void draw(){
   switch(gameState){
     case GAME_START :
       image (start2Img,0,0) ;
-      if(mouseX>207 && mouseX<455 && mouseY>377 && mouseY<408){
+      if(mouseX>207 && mouseX<455 && mouseY>377 && mouseY<408) {
         if(mousePressed) {gameState=GAME_RUN ;} image (start1Img,0,0) ;}
       break ; 
       
@@ -46,14 +46,14 @@ void draw(){
       image (bg1Img,h,0) ;
       image (bg2Img,m,0) ;
       h+= 2 ;m+= 2 ;
-      if(h==640) {h = -640 ;}
-      if(m==640) {m = -640 ;}
+      if(h == 640) {h = -640 ;}
+      if(m == 640) {m = -640 ;}
                         
       //hp
       fill (255,0,0) ;
       rect (10,9,x,25) ;
       image (hpImg,2,5) ;
-      if(x>=198){x=198;}
+      if(x >= 198) {x = 198;}
                         
       //fighter
       image (fighterImg,a,b) ;
@@ -70,9 +70,9 @@ void draw(){
       image (enemyImg,w%640,z) ;
       w+= 4 ;
       while((a<=(w%640)+50 && a>=(w%640)) 
-        &&(b>=z && b<=z+50 || b+50>=z && b+50<=z+50))
-        {x-= 38.6 ; w=0 ;
-         z = floor(random(45,425)) ; image (enemyImg,w%640,z) ;}
+        && (b>=z && b<=z+50 || b+50>=z && b+50<=z+50))
+        {x-= 38.6 ; w=0 ; z = floor(random(45,425)) ;
+        image (enemyImg,w%640,z) ;}
        
       //treasure          
       image (treasureImg,y,q) ;
@@ -83,7 +83,7 @@ void draw(){
      
       
       //lose
-      if(x<=0){gameState = GAME_LOSE ;}
+      if(x<=0) {gameState = GAME_LOSE ;}
       break ;
       
     case GAME_LOSE:
