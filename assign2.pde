@@ -25,7 +25,7 @@ void setup(){
   start1Img = loadImage("img/start1.png") ;
   start2Img = loadImage("img/start2.png") ;
   end2Img = loadImage("img/end2.png") ;
-  gameState = GAME_RUN ;
+  gameState = GAME_START ;
   upPressed = false  ;
   downPressed = false ;
   leftPressed = false ;
