@@ -3,9 +3,9 @@ PImage bg1Img, bg2Img, start1Img, start2Img, end2Img ;
 
 float x = 38.6 ;
 
-int y=floor(random(10,590)) ;
-int z=floor(random(45,425)) ;
-int q=floor(random(45,425)) ;
+int y = floor(random(10,590)) ;
+int z = floor(random(45,425)) ;
+int q = floor(random(45,425)) ;
 int w = 0, h = 0, m = -640, a = 575, b = 220 ;
 int gameState;
 
@@ -53,9 +53,6 @@ void draw(){
       fill (255,0,0) ;
       rect (10,9,x,25) ;
       image (hpImg,2,5) ;
-      if((a<=(w%640)+50 && a>=(w%640)) 
-         &&(b>=z && b<=z+50 || b+50>=z && b+50<=z+50))
-        {x-= 38.6 ;}
       if(x>=198){x=198;}
                         
       //fighter
@@ -72,12 +69,17 @@ void draw(){
       //enemy
       image (enemyImg,w%640,z) ;
       w+= 4 ;
+      while((a<=(w%640)+50 && a>=(w%640)) 
+        &&(b>=z && b<=z+50 || b+50>=z && b+50<=z+50))
+        {x-= 38.6 ; w=0 ;
+         z = floor(random(45,425)) ; image (enemyImg,w%640,z) ;}
        
       //treasure          
       image (treasureImg,y,q) ;
-      if((a<=y+40 && a>=y || a+50<=y+40 && a+50>=y) 
-         && (b>=q && b<=q+40 || b+50>=q && b+50<=q+40))
-       {x+= 1.93 ;}
+      while((a<=y+40 && a>=y || a+50<=y+40 && a+50>=y) 
+        && (b>=q && b<=q+40 || b+50>=q && b+50<=q+40))
+        {x+= 19.3 ; y = floor(random(10,590)) ;
+         q = floor(random(45,425)) ; image (treasureImg,y,q) ;}
      
       
       //lose
