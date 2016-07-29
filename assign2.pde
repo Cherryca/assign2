@@ -53,7 +53,7 @@ void draw(){
       fill (255,0,0) ;
       rect (10,9,x,25) ;
       image (hpImg,2,5) ;
-      if(x >= 198) {x = 198;}
+      if(x > 198) {x = 198 ;}
                         
       //fighter
       image (fighterImg,a,b) ;
