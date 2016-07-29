@@ -1,7 +1,8 @@
 PImage fighterImg, enemyImg, hpImg, treasureImg ;
 PImage bg1Img, bg2Img, start1Img, start2Img, end2Img ;
 
-int x=floor(random(03,195)) ;
+float x = 38.6 ;
+
 int y=floor(random(10,590)) ;
 int z=floor(random(45,425)) ;
 int q=floor(random(45,425)) ;
@@ -39,6 +40,7 @@ void draw(){
       if(mouseX>207 && mouseX<455 && mouseY>377 && mouseY<408){
         if(mousePressed) {gameState=GAME_RUN ;} image (start1Img,0,0) ;}
       break ; 
+      
     case GAME_RUN :
       //background
       image (bg1Img,h,0) ;
@@ -49,8 +51,12 @@ void draw(){
                         
       //hp
       fill (255,0,0) ;
-      rect (10,5,x,25) ;
+      rect (10,9,x,25) ;
       image (hpImg,2,5) ;
+      if((a<=(w%640)+50 && a>=(w%640)) 
+         &&(b>=z && b<=z+50 || b+50>=z && b+50<=z+50))
+        {x-= 38.6 ;}
+      if(x>=198){x=198;}
                         
       //fighter
       image (fighterImg,a,b) ;
@@ -69,16 +75,19 @@ void draw(){
        
       //treasure          
       image (treasureImg,y,q) ;
+      if((a<=y+40 && a>=y || a+50<=y+40 && a+50>=y) 
+         && (b>=q && b<=q+40 || b+50>=q && b+50<=q+40))
+       {x+= 1.93 ;}
+     
       
       //lose
-      if((a<=(w%640)+50 && a>=(w%640)) 
-         &&(b>=z && b<=z+50 || b+50>=z && b+50<=z+50))
-        {gameState=GAME_LOSE;}
-      break;
+      if(x<=0){gameState = GAME_LOSE ;}
+      break ;
       
     case GAME_LOSE:
+      gameState = GAME_LOSE;
       image (end2Img,0,0) ;
-      break;
+      break ;
   }}
 
 void keyPressed(){
